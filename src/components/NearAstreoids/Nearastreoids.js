@@ -4,10 +4,13 @@ import { Row, Card } from "react-bootstrap"
 
 export default function Nearastreoids() {
     const { responseObj } = Nasaastreoids()
+    const danger = "bg-danger"
+    const safe = "bg-success"
     return (
         <Row className="justify-content-center align-items-center">
         {
-            responseObj.map((data) => (<Card className="text-center bg-danger text-white m-3">
+            responseObj.map((data) => (
+            <Card className={`text-center ${data.is_potentially_hazardous_asteroid && danger} ${!data.is_potentially_hazardous_asteroid && safe} text-white m-3`}>
                
                 <Card.Title>
                     Asteroid:{data.name}
